@@ -1,19 +1,22 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}PQRS System{% endblock %}</title>
+    <title>{% block title %}SuperMarket{% endblock %}</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}?v={{ request.session.session_key }}">
 </head>
 <body>
     <header>
-        <h1>PQRS System</h1>
+        <h1>SuperMarket</h1>
     </header>
     <main>
         {% block content %}{% endblock %}
     </main>
     <footer>
-        <p>&copy; 2025 PQRS System</p>
+        <p>&copy; 2025 SuperMarket</p>
     </footer>
 </body>
 </html>
