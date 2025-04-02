@@ -4,11 +4,27 @@
     box-sizing: border-box;
 }
 
-body {
+html, body {
     background: url("/static/img/Principal.jpg") no-repeat center center fixed;
     background-size: cover; /*La imagen cubre toda la pantalla */
     font-family: 'Poppins', sans-serif;
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
 }
+
+/* Estilo exclusivo para la vista de login */
+.login-container {
+    background: url("/static/img/login.jpg") no-repeat center center fixed;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /*min-height: 100vh;*/
+    width: 100%;
+}
+
 
 body::before {
     content: "";
@@ -30,26 +46,24 @@ header {
 }
 
 main {
+    flex: 1;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 80vh; /* Ajusta tamaño */
 }
 
 
 .container {
     display: flex;
-    max-width: 600px; /* Ancho */
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
     width: 50%;
-    margin: auto;
-    /*background: rgba(255, 255, 255, 0.9); !* Fondo semi-transparente *!*/
+    max-width: 600px;
+    min-height: auto; /* Permite que crezca según su contenido */
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
 }
 
 header {
@@ -82,19 +96,28 @@ h2 {
 }
 
 .button-container {
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Asegura alineación vertical */
     margin-top: 20px;
+    width: 100%; /* Para que tome todo el ancho disponible */
 }
 
 .btn {
     display: inline-block;
-    padding: 10px 20px;
+    padding: 7px 15px;
     margin: 10px;
     text-decoration: none;
     color: white;
     background: #007bff;
     border-radius: 5px;
     transition: background 0.3s ease;
+    width: 100%;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
 }
+
 
 .btn:hover {
     background: #0056b3;
@@ -108,12 +131,48 @@ h2 {
     background: #5a6268;
 }
 
-footer {
+button[type="submit"].btn {
+    appearance: none; /* Evita los estilos predeterminados del navegador */
+    border: none; /* Asegura que no haya bordes inesperados */
+    cursor: pointer;
+    padding: 10px 20px !important;    /*!*margin: 10px;*!*/
+}
+
+button[type="submit"].btn:hover {
+    background-color: #0056b3;
+}
+
+
+.extra-container {
     text-align: center;
-    background-color: #333;
+    margin-top: 20px;
+}
+
+.btn-tertiary {
+    background-color: #ddd;
+    color: #333;
+    padding: 10px 15px;
+    text-decoration: none;
+    border-radius: 5px;
+    display: inline-block;
+    font-weight: 600;
+    border: 1px solid #ccc;
+    transition: background-color 0.3s;
+}
+
+.btn-tertiary:hover {
+    background-color: #bbb;
+}
+
+
+
+footer {
+    flex-shrink: 0;
+    text-align: center;
+    background-color: #444;
     color: white;
     padding: 10px 0;
-    position: absolute;
+    position: relative;
     width: 100%;
     bottom: 0;
 }
@@ -128,7 +187,60 @@ footer p {
     background: white;
     padding: 30px;
     border-radius: 12px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    width: 400px; /* Nivel cuadrado */
+    /*box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);*/
+    /*width: 400px; !* Nivel cuadrado *!*/
+    width: 100%; /* Hace que se ajuste al contenedor */
+    max-width: 400px;
+    display: flex;
     text-align: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px; /* Espaciado entre botones */
+}
+
+/* Ajustes para el formulario */
+.form-group {
+    text-align: left;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    font-size: 16px;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+
+.alert {
+    background: #ffdddd;
+    color: #d9534f;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+
+/* Estilos para el mensaje emergente */
+.toast {
+    display: none;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: #d9534f;
+    color: white;
+    padding: 15px 20px;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    font-size: 16px;
+    font-weight: bold;
+    z-index: 1000;
 }

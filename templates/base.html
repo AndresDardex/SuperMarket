@@ -12,9 +12,10 @@
     <header>
         <h1>SuperMarket</h1>
     </header>
-    <main>
+    <main class="{% if request.resolver_match.url_name == 'login' %}login-container{% endif %}">
         {% block content %}{% endblock %}
     </main>
+
     <footer>
         <p>&copy; 2025 SuperMarket</p>
     </footer>
