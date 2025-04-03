@@ -1,2 +1,10 @@
+# Ignorar archivos compilados de Python
 __pycache__/
 *.pyc
+
+# Ignorar base de datos SQLite
+db.sqlite3
+
+# Ignorar archivos de migraciones compiladas (si es necesario)
+pqrs_app/migrations/__pycache__/
+pqrs_project/__pycache__/
