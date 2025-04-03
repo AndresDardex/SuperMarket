@@ -1,5 +1,6 @@
 from django.db import models
 from django.core.exceptions import ValidationError
+from django.contrib.auth.hashers import make_password, check_password
 
 class Cliente(models.Model):
     TIPO_IDENTIFICACION_CHOICES = [
@@ -27,10 +28,21 @@ class Cliente(models.Model):
     telefono_movil = models.CharField(max_length=15)
     tipo = models.CharField(max_length=50, choices=TIPO_PERMISOS_CHOICES, default='Cliente')
     validacion = models.CharField(max_length=3, choices=VALIDACION_CHOICES, default='No')
+    password = models.CharField(max_length=128, null=True, blank=True)  # Campo para almacenar contraseñas encriptadas
 
     def clean(self):
         # Validaciones adicionales si es necesario
         pass
+
+    def save(self, *args, **kwargs):
+        # Encripta la contraseña antes de guardar el modelo
+        if not self.pk or 'password' in self.get_dirty_fields():
+            self.password = make_password(self.password)
+        super().save(*args, **kwargs)
+
+    def check_password(self, raw_password):
+        # Verifica si la contraseña ingresada coincide con la almacenada
+        return check_password(raw_password, self.password)
 
     def __str__(self):
         return self.nombre_completo
