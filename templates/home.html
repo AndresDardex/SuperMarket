@@ -3,10 +3,10 @@
 {% block content %}
     <div class="container">
         <div class="card">
-            <h2>¡Bienvenido a SuperMarket PQRS System!</h2>
+            <h2>¡Bienvenidos a SuperMarket PQRS System!</h2>
             <p>Gestiona tus peticiones, quejas, reclamos y sugerencias de forma rápida y eficiente</p>
             <div class="button-container">
-                <a href="#" class="btn btn-primary">Iniciar Sesión</a>
+                <a href="{% url 'admin:login' %}" class="btn btn-primary">Iniciar Sesión</a>
                 <a href="#" class="btn btn-secondary">Registrarse</a>
             </div>
         </div>
