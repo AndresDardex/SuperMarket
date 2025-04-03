@@ -16,12 +16,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-
-from django.contrib import admin
-from django.urls import path
 from pqrs_app import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.home, name='home'),  # Ruta para la vista home
+    path('', views.home, name='home'),
+    path('registrar/', views.registrar_usuario, name='registrar_usuario'),  # Nueva ruta
 ]
